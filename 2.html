@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><p>
+    #include< stdio.h> <br>
+    #include< math.h> <br>
+    #include< math.h> <br>
+    #include< math.h> <br>
+    #include< GL/glut.h> <br>
+    int xstart,xend,ystart,yend;<br>
+    int Round(float a) <br>
+    {<br>
+    return (int) (a+0.5); <br>
+    }<br>
+    void lineDDA(void) <br>
+    { <br>
+    int dx=xend-xstart;<br>
+    int dy=yend-ystart;<br>
+    int steps,k;<br>
+    float xincrement,yincrement,x=xstart,y=ystart;<br>
+    if(abs(dx)>abs(dy)) <br>
+    { <br>
+    steps=abs(dx); <br>
+    }<br>
+    else <br>
+    steps=fabs(dy);<br>
+    xincrement=(float) (dx)/(float) (steps); <br>
+    yincrement=(float) (dy)/(float)(steps); <br>
+    glBegin(GL_POINTS);<br>
+    glVertex2i(Round(x),Round(y));<br>
+    glEnd();<br>
+    for(k=0;k < steps;k++) <br>
+     { <br>
+    x+=xincrement;<br>
+    y+=yincrement;<br>
+    
+    glBegin(GL_POINTS);<br>
+glVertex2i(Round(x),Round(y)); <br>
+glEnd(); <br>
+}<br>
+glFlush(); <br>
+}<br>
+int main(int argc,char** argv) <br>
+{ <br>
+printf("enter the value for the coordinate"); <br>
+scanf("%d%d%d%d",&xstart,&xend,&ystart,&yend); <br>
+glutInit(&argc,argv); <br>
+glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB); <br>
+glutInitWindowPosition(50,100); <br>
+glutInitWindowSize(500,500); <br>
+glutCreateWindow("An example program"); <br>
+glClearColor(1.0,1.0,1.0,0.0); <br>
+glMatrixMode(GL_PROJECTION); <br>
+gluOrtho2D(0.0,200.0,0.0,150.0); <br>
+glClear(GL_COLOR_BUFFER_BIT); <br>
+glColor3f(1.0,0.0,0.0); <br>
+glPointSize(5.0); <br>
+glutDisplayFunc(lineDDA);<br> 
+glutMainLoop(); <br>
+}<br>
+
+</head>
+
+<body>
+    
+</body>
+</html>

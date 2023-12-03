@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><p>
+    #include< GL/glut.h> <br>
+void init(void) <br> 
+{ <br>
+glClearColor(1.0,1.0,1.0,0.0); <br>
+glMatrixMode(GL_PROJECTION); <br>
+gluOrtho2D(0.0,200.0,0.0,150.0); <br>
+} <br>
+void PlotPoint(void) <br>
+{ <br>
+ glColor3f(1.0,0.0,0.0); <br>
+glPointSize(8.0); <br>
+glBegin(GL_POINTS); <br>
+glVertex2i(130,100); <br>
+glEnd(); <br>
+glPointSize(8.0); <br>
+glColor3f(0.0,1.0,0.0); <br>
+glBegin(GL_POINTS); <br>
+glVertex2i(140,100); <br>
+glColor3f(0.0,0.0,1.0); <br>
+glVertex2i(150,100); <br>
+glEnd(); glFlush(); <br>
+} <br>
+void linesegment(void) <br>
+{ <br>
+glColor3f(0.0,0.4,0.2); <br>
+glLineWidth(2.0); <br>
+glEnable(GL_LINE_STIPPLE); <br>
+glLineStipple(1,0x0101); <br>
+glBegin(GL_LINES); <br>
+glVertex2i(180,50); <br>
+glVertex2i(25,145); <br>
+glEnd(); <br>
+glLineWidth(5.0); <br>
+glColor3f(0.5,0.4,0.2); <br>
+glLineStipple(1,0x00FF); <br>
+glBegin(GL_LINES); <br>
+glVertex2i(180,25); <br>
+glVertex2i(50,145); <br>
+glEnd(); <br>
+glLineWidth(3.0); <br>
+glColor3f(0.4,0.3,0.2); <br>
+glLineStipple(1,0x1C47); <br>
+glBegin(GL_LINES); <br>
+glVertex2i(170,12); <br>
+glVertex2i(5,150); <br>
+glEnd(); <br>
+glDisable(GL_LINE_STIPPLE); <br>
+glFlush(); <br>
+} <br>
+void display(void) <br>
+{ <br>
+linesegment(); <br>
+PlotPoint(); <br>
+} <br>
+int main(int argc,char** argv) <br>
+{ <br>
+glutInit(&argc,argv); <br>
+glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB); <br>
+glutInitWindowPosition(50,100); <br>
+glutInitWindowSize(400,300); <br>
+glutCreateWindow("an example opengl pgm") <br>
+init(); <br>
+glClear(GL_COLOR_BUFFER_BIT); <br>
+glutDisplayFunc(display); <br>
+glutMainLoop(); <br>
+ } <br>
+
+</head>
+<body>
+    
+</body>
+</html>
